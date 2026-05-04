@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grão & Alma | Cafeteria de Origem</title>
+    <meta name="description" content="Cafés de origem única torrados artesanalmente e pães de fermentação natural. Uma experiência sensorial focada na qualidade.">
+    
+    <!-- Typography: Outfit (Anti-slop Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons: Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Noise/Grain Filter -->
+    <div class="fixed-noise" aria-hidden="true"></div>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">Grão & Alma.</a>
+            <div class="nav-links">
+                <a href="#origem" class="nav-link">Origem</a>
+                <a href="#menu" class="nav-link">Menu</a>
+                <a href="#experiencia" class="nav-link">Experiência</a>
+            </div>
+            <button class="btn-primary magnetic-btn">
+                <span>Reservar Mesa</span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section: Asymmetric -->
+        <section class="hero stagger-parent">
+            <div class="hero-content stagger-child">
+                <div class="badge">Colheita 2026 — Lote Limitado</div>
+                <h1 class="hero-title">O tempo dita a <span>extração perfeita.</span></h1>
+                <p class="hero-desc">
+                    Trabalhamos exclusivamente com grãos de origem única rastreável, torrados artesanalmente para extrair notas limpas, vibrantes e autênticas. Sem pressa. Sem concessões.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary magnetic-btn">
+                        <span>Ver Cardápio</span>
+                        <i class="ph ph-arrow-right"></i>
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="ph ph-play"></i>
+                        <span>Nossa Torrefação</span>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual stagger-child">
+                <div class="image-wrapper">
+                    <img src="file:///C:/Users/nickg/.gemini/antigravity/brain/9a222901-d9c9-4c1b-8339-52fc4fcd3d6a/hero_espresso_1777923531775.png" alt="Extração de espresso em máquina profissional" class="hero-image parallax-img" onerror="this.src='https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1000&auto=format&fit=crop'">
+                    <div class="glass-overlay">
+                        <div class="glass-content">
+                            <i class="ph ph-thermometer"></i>
+                            <div class="glass-text">
+                                <span class="label">Água Filtrada V60</span>
+                                <span class="value">93.2°C</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Text Mask Reveal (A Torra) -->
+        <section id="torra" class="mask-section">
+            <div class="mask-container">
+                <div class="mask-text-wrapper">
+                    <h2 class="mask-text">O Fogo.</h2>
+                </div>
+                <div class="mask-reveal-content">
+                    <div class="reveal-inner">
+                        <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?q=80&w=1200&auto=format&fit=crop" alt="Grãos de café sendo torrados" class="reveal-img">
+                        <!-- Moved text box to bottom right to prevent overlapping the central mask text -->
+                        <div class="reveal-text-box">
+                            <h3>A Ciência da Torra</h3>
+                            <p>Monitoramos o desenvolvimento de cada grão segundo a segundo. A caramelização perfeita exige paciência.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Produtores -->
+        <section id="produtores" class="producers-section stagger-parent">
+            <div class="section-header stagger-child">
+                <h2 class="section-title">Nossas Raízes.</h2>
+                <p class="section-subtitle">Conheça as famílias e fazendas que cultivam a alma do nosso café.</p>
+            </div>
+            <div class="producers-grid">
+                <div class="producer-card stagger-child">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1595861180862-28c0db1d6a62?q=80&w=800&auto=format&fit=crop" alt="Fazenda Caparaó" class="parallax-img">
+                    </div>
+                    <div class="producer-info">
+                        <h3>Sítio Alto da Serra</h3>
+                        <p class="producer-region">Caparaó, MG — 1.400m</p>
+                        <p class="producer-desc">Cafés colhidos a dedo por três gerações. Especialistas em fermentação anaeróbica com notas vibrantes.</p>
+                    </div>
+                </div>
+                <div class="producer-card stagger-child offset-card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?q=80&w=800&auto=format&fit=crop" alt="Fazenda Cerrado" class="parallax-img">
+                    </div>
+                    <div class="producer-info">
+                        <h3>Fazenda Alvorada</h3>
+                        <p class="producer-region">Cerrado Mineiro — 1.100m</p>
+                        <p class="producer-desc">Pioneiros em energia 100% limpa no processamento natural. Base dos nossos espressos com notas de chocolate amargo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Nossa Oferta (Premium Menu List) -->
+        <section id="menu" class="premium-menu-section stagger-parent">
+            <div class="section-header stagger-child">
+                <h2 class="section-title">Nossa Oferta.</h2>
+                <p class="section-subtitle">Simplicidade elevada. Foco na pureza dos ingredientes.</p>
+            </div>
+            
+            <div class="menu-list-container">
+                <div class="menu-category stagger-child">
+                    <h3>Extração</h3>
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <span class="menu-item-name">Hario V60</span>
+                                <span class="menu-item-desc">Filtragem limpa, notas florais e acidez brilhante. 1:15 ratio.</span>
+                            </div>
+                            <span class="menu-item-price">R$ 18</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <span class="menu-item-name">AeroPress</span>
+                                <span class="menu-item-desc">Corpo denso, doçura destacada. Imersão sob pressão controlada.</span>
+                            </div>
+                            <span class="menu-item-price">R$ 16</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <span class="menu-item-name">Espresso Duplo</span>
+                                <span class="menu-item-desc">Blend da casa exclusivo. Textura xaroposa e crema persistente.</span>
+                            </div>
+                            <span class="menu-item-price">R$ 12</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-category stagger-child">
+                    <h3>Comida</h3>
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <span class="menu-item-name">Sourdough Clássico</span>
+                                <span class="menu-item-desc">Fatia espessa, fermentação de 36h. Servida com manteiga ghee.</span>
+                            </div>
+                            <span class="menu-item-price">R$ 14</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-info">
+                                <span class="menu-item-name">Tosta de Cogumelos</span>
+                                <span class="menu-item-desc">Cogumelos defumados, queijo curado de ovelha e tomilho fresco.</span>
+                            </div>
+                            <span class="menu-item-price">R$ 28</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manifesto Section -->
+        <section id="manifesto" class="manifesto-section stagger-parent">
+            <div class="manifesto-content stagger-child">
+                <p class="manifesto-text">
+                    Café não é mercadoria.<br>
+                    <span class="highlight">É agricultura.</span>
+                </p>
+                <div class="manifesto-details">
+                    <p>Tratamos cada safra com o respeito de quem conhece a terra, as mãos que colheram e o tempo que a natureza exigiu. O que servimos na sua xícara é apenas a expressão final e sincera de todo esse ciclo.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Grão & Alma.</div>
+            <p class="footer-address">Rua dos Pinheiros, 1042 — SP</p>
+            <div class="footer-links">
+                <a href="#">Instagram</a>
+                <a href="#">Política de Privacidade</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
