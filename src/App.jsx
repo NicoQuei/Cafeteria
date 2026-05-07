@@ -4,10 +4,11 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Cardapio from './pages/Cardapio';
 import Preloader from './components/Preloader';
+import SmoothScroll from './components/SmoothScroll';
 
 function App() {
   return (
-    <>
+    <SmoothScroll>
       <Preloader />
       <BrowserRouter>
         <div className="fixed-noise" aria-hidden="true"></div>
@@ -18,7 +19,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </>
+    </SmoothScroll>
   );
 }
 

@@ -4,6 +4,7 @@ import Marquee from '../components/Marquee';
 import Roots from '../components/Roots';
 import Process from '../components/Process';
 import Manifesto from '../components/Manifesto';
+import Reservation from '../components/Reservation';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Roots />
       <Process />
       <Manifesto />
+      <Reservation />
     </main>
   );
 }

@@ -10,20 +10,27 @@ export default function Process() {
     const wrapper = useRef();
 
     useGSAP(() => {
-        const getScrollAmount = () => wrapper.current.scrollWidth - window.innerWidth;
-        
-        gsap.to(wrapper.current, {
-            x: () => -getScrollAmount(),
-            ease: "none",
-            scrollTrigger: {
-                trigger: container.current,
-                pin: true,
-                scrub: 1,
-                start: "top top",
-                end: () => `+=${getScrollAmount()}`,
-                invalidateOnRefresh: true
-            }
+        let mm = gsap.matchMedia();
+
+        mm.add("(min-width: 993px)", () => {
+            const getScrollAmount = () => wrapper.current.scrollWidth - window.innerWidth;
+            
+            gsap.to(wrapper.current, {
+                x: () => -getScrollAmount(),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: container.current,
+                    pin: true,
+                    scrub: 1,
+                    start: "top top",
+                    end: () => `+=${getScrollAmount()}`,
+                    invalidateOnRefresh: true
+                }
+            });
         });
+
+        // Cleanup isn't strictly necessary here because mm.revert() happens automatically in useGSAP, but we return a cleanup function just in case.
+        return () => mm.revert();
     }, { scope: container });
 
     return (
@@ -46,7 +53,7 @@ export default function Process() {
                         <p>Processamento cuidadoso. Separação de defeitos físicos para garantir pureza impecável no lote final.</p>
                     </div>
                     <div className="panel-image">
-                        <img src="https://images.unsplash.com/photo-1485600600373-3ce1a547071e?q=80&w=800&auto=format&fit=crop" alt="Seleção de grãos" loading="lazy" />
+                        <img src="https://images.unsplash.com/photo-1611162458324-aae1eb4129a4?q=80&w=800&auto=format&fit=crop" alt="Seleção de grãos" loading="lazy" />
                     </div>
                 </div>
                 <div className="process-panel">

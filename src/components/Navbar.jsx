@@ -2,9 +2,11 @@ import { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navRef = useRef();
     const location = useLocation();
 
@@ -29,6 +31,7 @@ export default function Navbar() {
         } else {
             window.scrollTo(0, 0);
         }
+        setMobileMenuOpen(false); // Close menu on navigation
     }, [location]);
 
     useGSAP(() => {
@@ -57,27 +60,51 @@ export default function Navbar() {
     };
 
     return (
-        <nav className={`main-nav ${scrolled ? 'scrolled' : ''}`} ref={navRef}>
-            <div className="nav-container">
-                <Link to="/" className="logo">
-                    Grão & Alma <span className="logo-dot"></span>
-                </Link>
-                <div className="nav-links">
-                    <Link to="/#torra" className="nav-link">A Torra</Link>
-                    <Link to="/#produtores" className="nav-link">Produtores</Link>
-                    <Link to="/#processo" className="nav-link">Processo</Link>
-                    <Link to="/#manifesto" className="nav-link">Manifesto</Link>
-                    <Link to="/cardapio" className="nav-link" style={{ color: 'var(--accent)' }}>Cardápio</Link>
+        <>
+            <nav className={`main-nav ${scrolled ? 'scrolled' : ''}`} ref={navRef}>
+                <div className="nav-container">
+                    <Link to="/" className="logo">
+                        Grão & Alma <span className="logo-dot"></span>
+                    </Link>
+                    <div className="nav-links">
+                        <Link to="/#torra" className="nav-link">A Torra</Link>
+                        <Link to="/#produtores" className="nav-link">Produtores</Link>
+                        <Link to="/#processo" className="nav-link">Processo</Link>
+                        <Link to="/#manifesto" className="nav-link">Manifesto</Link>
+                        <Link to="/cardapio" className="nav-link" style={{ color: 'var(--accent)' }}>Cardápio</Link>
+                    </div>
+                    <div className="nav-actions">
+                        <Link 
+                            to="/#reservas"
+                            className="btn-primary magnetic-btn desktop-res-btn"
+                            onMouseMove={handleMouseMove}
+                            onMouseLeave={handleMouseLeave}
+                            style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem', textDecoration: 'none' }}
+                        >
+                            <span>Reservar</span>
+                        </Link>
+                        <button 
+                            className="mobile-menu-btn"
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            aria-label="Toggle menu"
+                        >
+                            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                    </div>
                 </div>
-                <button 
-                    className="btn-primary magnetic-btn"
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    style={{ padding: '0.6rem 1.5rem', fontSize: '0.9rem' }}
-                >
-                    <span>Reservar</span>
-                </button>
+            </nav>
+
+            {/* Mobile Menu Overlay */}
+            <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+                <div className="mobile-nav-links">
+                    <Link to="/#torra" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>A Torra</Link>
+                    <Link to="/#produtores" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Produtores</Link>
+                    <Link to="/#processo" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Processo</Link>
+                    <Link to="/#manifesto" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Manifesto</Link>
+                    <Link to="/cardapio" className="mobile-nav-link" style={{ color: 'var(--accent)' }} onClick={() => setMobileMenuOpen(false)}>Cardápio</Link>
+                    <Link to="/#reservas" className="mobile-nav-link" onClick={() => setMobileMenuOpen(false)}>Reservar</Link>
+                </div>
             </div>
-        </nav>
+        </>
     );
 }
